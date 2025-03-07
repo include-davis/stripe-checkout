@@ -1,0 +1,49 @@
+{
+  "name": "easy-stripe-checkout",
+  "version": "1.0.0",
+  "description": "A simplified Stripe checkout integration for React and Next.js applications",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"No tests yet\""
+  },
+  "keywords": [
+    "stripe",
+    "checkout",
+    "payment",
+    "react",
+    "nextjs",
+    "ecommerce"
+  ],
+  "author": "Winson Yu",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/winzyu/easy-stripe-checkout"
+  },
+  "bugs": {
+    "url": "https://github.com/winzyu/easy-stripe-checkout/issues"
+  },
+  "homepage": "https://github.com/winzyu/easy-stripe-checkout#readme",
+  "peerDependencies": {
+    "next": ">=13.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "@stripe/react-stripe-js": ">=3.0.0",
+    "@stripe/stripe-js": ">=5.0.0"
+  },
+  "dependencies": {
+    "stripe": "^17.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.0.0"
+  }
+}
