@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { PaymentStatusProps, ThemeOptions } from '../types';
-import { createTheme } from '../utils/theme';
+import { createTheme } from '../utils/themeProcessor';
 
 interface PaymentStatusComponentProps extends PaymentStatusProps {
   theme?: ThemeOptions;

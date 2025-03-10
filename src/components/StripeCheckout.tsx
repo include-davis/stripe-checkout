@@ -1,12 +1,24 @@
 'use client';
 
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Elements } from '@stripe/react-stripe-js';
 import { StripeCheckoutProps } from '../types';
 import { getStripeClient } from '../utils/stripeClient';
-import { createTheme, createStripeAppearance } from '../utils/theme';
+import { createTheme, createStripeAppearance } from '../utils/themeProcessor';
 import { useStripePayment } from '../hooks/useStripePayment';
 import CheckoutForm from './CheckoutForm';
+
+// Loading state component for Suspense
+const LoadingState = () => (
+  <div className="min-h-64 flex items-center justify-center">
+    <div className="text-center py-12">
+      <div className="animate-pulse">
+        <div className="h-8 bg-gray-200 rounded w-48 mx-auto mb-8"></div>
+        <div className="h-64 bg-gray-100 rounded w-full max-w-md mx-auto"></div>
+      </div>
+    </div>
+  </div>
+);
 
 const StripeCheckout: React.FC<StripeCheckoutProps> = ({
   cartItems,
@@ -16,26 +28,15 @@ const StripeCheckout: React.FC<StripeCheckoutProps> = ({
   onPaymentSuccess,
   onPaymentError,
 }) => {
+
   // Get Stripe client
   const stripePromise = getStripeClient(stripePublicKey);
   
   // Get payment intent and status
   const { clientSecret, loading, error, totalAmount } = useStripePayment(cartItems, options);
   
-  // Create theme with defaults
-  const theme = createTheme(userTheme);
-  
   if (loading) {
-    return (
-      <div className="min-h-64 flex items-center justify-center">
-        <div className="text-center py-12">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 rounded w-48 mx-auto mb-8"></div>
-            <div className="h-64 bg-gray-100 rounded w-full max-w-md mx-auto"></div>
-          </div>
-        </div>
-      </div>
-    );
+    return <LoadingState />;
   }
 
   if (error) {
@@ -84,7 +85,8 @@ const StripeCheckout: React.FC<StripeCheckoutProps> = ({
   }
 
   // Configure Stripe Elements
-  const appearance = createStripeAppearance(theme);
+  const completeTheme = createTheme(userTheme);
+  const appearance = createStripeAppearance(completeTheme);
   const elementsOptions = {
     clientSecret,
     appearance,
@@ -97,7 +99,7 @@ const StripeCheckout: React.FC<StripeCheckoutProps> = ({
         clientSecret={clientSecret}
         successUrl={options.successUrl}
         cancelUrl={options.cancelUrl}
-        theme={theme}
+        theme={completeTheme}
         onPaymentSuccess={onPaymentSuccess}
         onPaymentError={onPaymentError}
       />
