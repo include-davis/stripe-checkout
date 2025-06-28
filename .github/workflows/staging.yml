@@ -1,0 +1,50 @@
+name: Staging Deployment
+
+on:
+  push:
+    branches:
+      - 'main'
+  workflow_dispatch:
+
+jobs:
+  deploy_staging:
+    name: Deploy Staging
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '21.1.0'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Type check
+        run: npx tsc --noEmit
+        
+      - name: Build package
+        run: npm run build
+      
+      - name: Create staging package
+        run: |
+          # Create a staging version with timestamp
+          STAGING_VERSION=$(node -p "require('./package.json').version")-staging.$(date +%Y%m%d%H%M%S)
+          echo "Staging version: $STAGING_VERSION"
+          npm version $STAGING_VERSION --no-git-tag-version
+
+      - name: Pack for staging
+        run: |
+          npm pack
+          echo "Staging package created successfully"
+
+      - name: Publish to npm (staging)
+        run: npm publish --tag staging
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} 
+
+      - name: Success
+        run: echo "🛠️ Deploy successful 🛠️"
