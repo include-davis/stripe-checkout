@@ -20,6 +20,9 @@ jobs:
         with:
           node-version: "lts/*"
           registry-url: "https://registry.npmjs.org"
+      
+      - name: Install latest NPM
+        run: npm install -g npm@latest
 
       - name: Install dependencies
         run: npm install
@@ -50,8 +53,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Publish to npm (staging)
-        run: |
-          npm publish --tag staging
+        run: npm publish --tag staging
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
