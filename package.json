@@ -1,7 +1,7 @@
 {
-  "name": "easy-stripe-checkout",
-  "version": "2.0.0",
-  "description": "A simplified Stripe checkout integration for React and Next.js applications",
+  "name": "@include/stripe-checkout",
+  "version": "0.0.1",
+  "description": "A simplified Stripe checkout integration for React and Next.js applications. Adapted from Winson Yu's easy-stripe-checkout.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -20,16 +20,16 @@
     "nextjs",
     "ecommerce"
   ],
-  "author": "Winson Yu",
+  "author": "Include at Davis",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/winzyu/easy-stripe-checkout"
+    "url": "https://github.com/include-davis/stripe-checkout"
   },
   "bugs": {
-    "url": "https://github.com/winzyu/easy-stripe-checkout/issues"
+    "url": "https://github.com/include-davis/stripe-checkout/issues"
   },
-  "homepage": "https://github.com/winzyu/easy-stripe-checkout#readme",
+  "homepage": "https://github.com/include-davis/stripe-checkout#readme",
   "peerDependencies": {
     "@stripe/react-stripe-js": ">=3.0.0",
     "@stripe/stripe-js": ">=5.0.0",
