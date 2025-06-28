@@ -18,11 +18,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "lts/*"
-          registry-url: "https://registry.npmjs.org"
-      
-      - name: Install latest NPM
-        run: npm install -g npm@latest
+          node-version: '21.1.0'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: npm install
@@ -53,10 +50,9 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Publish to npm (staging)
-        run: npm publish --tag staging
+        run: npm publish --tag staging --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Success
         run: echo "🛠️ Deploy successful 🛠️"
