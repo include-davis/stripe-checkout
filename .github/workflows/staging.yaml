@@ -53,6 +53,7 @@ jobs:
         run: npm publish --tag staging
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Success
         run: echo "🛠️ Deploy successful 🛠️"
