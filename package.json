@@ -1,5 +1,5 @@
 {
-  "name": "@include/stripe-checkout",
+  "name": "@includedavis/stripe-checkout",
   "version": "0.0.1",
   "description": "A simplified Stripe checkout integration for React and Next.js applications. Adapted from Winson Yu's easy-stripe-checkout.",
   "main": "dist/index.js",
