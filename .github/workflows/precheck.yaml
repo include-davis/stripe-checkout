@@ -8,6 +8,8 @@ jobs:
   build:
     name: Build and Test
     runs-on: ubuntu-latest
+    environment:
+      name: development
 
     steps:
       - name: Checkout code
