@@ -37,25 +37,25 @@ jobs:
           echo "Staging version: $STAGING_VERSION"
           npm version $STAGING_VERSION --no-git-tag-version
 
-      - name: Pack for staging
-        run: |
-          npm pack
-          echo "Staging package created successfully"
+      # - name: Pack for staging
+      #   run: |
+      #     npm pack
+      #     echo "Staging package created successfully"
 
-      - name: Create .npmrc
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NODE_AUTH_TOKEN }}" > ~/.npmrc
-          cat ~/.npmrc
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+      # - name: Create .npmrc
+      #   run: |
+      #     echo "//registry.npmjs.org/:_authToken=${{ secrets.NODE_AUTH_TOKEN }}" > ~/.npmrc
+      #     cat ~/.npmrc
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
-      - name: Debug npm configuration
-        run: |
-          npm config get registry
-          npm whoami || echo "npm whoami failed (expected if not logged in)"
-          npm config list
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+      # - name: Debug npm configuration
+      #   run: |
+      #     npm config get registry
+      #     npm whoami || echo "npm whoami failed (expected if not logged in)"
+      #     npm config list
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Publish to npm (staging)
         run: npm publish --tag staging --access public
