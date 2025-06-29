@@ -10,6 +10,8 @@ jobs:
   deploy_staging:
     name: Deploy Staging
     runs-on: ubuntu-latest
+    environment:
+      name: staging
 
     steps:
       - name: Checkout code
@@ -36,16 +38,6 @@ jobs:
           STAGING_VERSION=$(node -p "require('./package.json').version")-staging.$(date +%Y%m%d%H%M%S)
           echo "Staging version: $STAGING_VERSION"
           npm version $STAGING_VERSION --no-git-tag-version
-
-      - name: Pack for staging
-        run: |
-          npm pack
-          echo "Staging package created successfully"
-
-      - name: Verify .npmrc content
-        run: cat ~/.npmrc
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to npm (staging)
         run: npm publish --tag staging
