@@ -1,6 +1,6 @@
 # Stripe Checkout
 
-A simplified Stripe checkout integration for React and Next.js applications with extensive theme customization.
+A simplified Stripe checkout integration for React and Next.js applications with extensive theme customization. Adapted from Winson Yu's easy-stripe-checkout.
 
 ## Features
 
@@ -122,7 +122,7 @@ For more details, see the [Theme Customization Guide](./Theme-Customization-Guid
 The package includes several pre-built themes you can use:
 
 ```tsx
-import { StripeCheckout, modernMinimalTheme } from 'easy-stripe-checkout';
+import { StripeCheckout, modernMinimalTheme } from '@includedavis/stripe-checkout';
 
 <StripeCheckout
   // other props...
