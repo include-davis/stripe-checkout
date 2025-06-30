@@ -1,4 +1,4 @@
-# Easy Stripe Checkout
+# Stripe Checkout
 
 A simplified Stripe checkout integration for React and Next.js applications with extensive theme customization.
 
@@ -15,9 +15,9 @@ A simplified Stripe checkout integration for React and Next.js applications with
 ## Installation
 
 ```bash
-npm install easy-stripe-checkout
+npm install @includedavis/stripe-checkout
 # or
-yarn add easy-stripe-checkout
+yarn add @includedavis/stripe-checkout
 ```
 
 ## Quick Start
@@ -26,7 +26,7 @@ yarn add easy-stripe-checkout
 
 ```tsx
 // app/api/create-payment-intent/route.ts
-import { createPaymentIntentHandler } from 'easy-stripe-checkout';
+import { createPaymentIntentHandler } from '@includedavis/stripe-checkout';
 import { NextResponse } from 'next/server';
 
 const handler = createPaymentIntentHandler({
@@ -43,7 +43,7 @@ export async function POST(request: Request) {
 ```tsx
 'use client';
 
-import { StripeCheckout } from 'easy-stripe-checkout';
+import { StripeCheckout } from '@includedavis/stripe-checkout';
 
 const cartItems = [
   {
@@ -82,7 +82,7 @@ export default function CheckoutPage() {
 
 ## Theme Customization
 
-Easy Stripe Checkout offers extensive theme customization options. You can use built-in themes or create your own:
+Stripe Checkout offers extensive theme customization options. You can use built-in themes or create your own:
 
 ```tsx
 // Using a built-in theme
@@ -170,13 +170,9 @@ interface CheckoutOptions {
 }
 ```
 
-## Examples
-
-See the `/examples` directory for complete implementations.
-
 ## Browser Support
 
-Easy Stripe Checkout works in all modern browsers. Internet Explorer is not supported.
+Stripe Checkout works in all modern browsers. Internet Explorer is not supported.
 
 ## License
 
